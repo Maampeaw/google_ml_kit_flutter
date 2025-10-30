@@ -1,41 +1,25 @@
+plugins {
+    id("com.android.library") version "8.7.3"
+}
+
 group = "com.google_mlkit_face_detection"
-version = "1.0"
-
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath("com.android.tools.build:gradle:8.6.1")
-    }
-}
-
-rootProject.allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-
-apply plugin: "com.android.library"
+version = "1.0.0"
 
 android {
     namespace = "com.google_mlkit_face_detection"
-
     compileSdk = 35
+
+    defaultConfig {
+        minSdk = 21
+        consumerProguardFiles("consumer-rules.pro")
+    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+}
 
-    defaultConfig {
-        minSdk = 21
-    }
-
-    dependencies {
-        implementation("com.google.mlkit:face-detection:16.1.7")
-    }
+dependencies {
+    implementation("com.google.mlkit:face-detection:16.1.7")
 }
